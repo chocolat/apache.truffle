@@ -1,0 +1,14 @@
+(trigger
+    (key [[ctrl]H]))
+
+(name [Documentation for Word / Selection])
+
+(only-in source.apache-config)
+
+(input selection word)
+
+(output html)
+
+(save nothing)
+
+(script apache_doc.rb)

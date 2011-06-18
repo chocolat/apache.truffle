@@ -1,0 +1,14 @@
+(name [Virtual Host])
+
+(trigger
+    (tab vhost))
+
+(only-in source.apache-config)
+
+(snippet [<VirtualHost %{1="example.org"}>
+	ServerAdmin webmaster@%{1}
+	DocumentRoot /www/vhosts/%{1}
+	ServerName %{1}
+	ErrorLog logs/%{1}-error_log
+	CustomLog logs/%{1}-access_log common
+</VirtualHost>])

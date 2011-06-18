@@ -1,0 +1,38 @@
+(trigger)
+
+(name [Tail Access Log])
+
+(only-in source.apache-config)
+
+(input nothing)
+
+(output nothing)
+
+(save nothing)
+
+(script [TIGER_ACCESS_LOG="/var/log/httpd/access_log"
+LEOPARD_ACCESS_LOG="/var/log/apache2/access_log"
+
+if [[ "$TM_APACHE_ACCESS_LOG" == "" ]]; then
+
+	if [[ -f "$LEOPARD_ACCESS_LOG" ]]; then
+
+		TM_APACHE_ACCESS_LOG="$LEOPARD_ACCESS_LOG"
+
+	else
+
+		TM_APACHE_ACCESS_LOG="$TIGER_ACCESS_LOG"
+
+	fi
+fi
+
+if [[ -f "$TM_APACHE_ACCESS_LOG" ]]; then
+
+	#tailLog "$TM_APACHE_ACCESS_LOG" "httpd Access Log"
+	osascript "$TM_BUNDLE_SUPPORT/lib/tail_log.applescript" "$TM_APACHE_ACCESS_LOG" "httpd Access Log" >/dev/null;
+
+else
+
+	exit_show_tool_tip "http Access Log not located."
+
+fi])

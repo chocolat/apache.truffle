@@ -1,0 +1,8 @@
+(name Options)
+
+(trigger
+    (tab opt))
+
+(only-in source.apache-config)
+
+(snippet [Options %{1="%{2=\"All \"}%{3=\"ExecCGI \"}%{4=\"FollowSymLinks \"}%{5=\"Includes \"}%{6=\"IncludesNOEXEC \"}%{7=\"Indexes \"}%{8=\"MultiViews \"}%{9=\"SymLinksIfOwnerMatch\"}"}])

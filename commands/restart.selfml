@@ -1,0 +1,18 @@
+(trigger
+    (key [[cmd]R]))
+
+(name Restart)
+
+(only-in source.apache-config)
+
+(input nothing)
+
+(output nothing)
+
+(save nothing)
+
+(script [#!/usr/bin/env ruby -rjcode -Ku
+
+require "#{ENV['TM_BUNDLE_SUPPORT']}/lib/apache_ctl.rb"
+
+ApacheCTL.new.restart])

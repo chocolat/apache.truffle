@@ -1,0 +1,39 @@
+(trigger)
+
+(name [Tail Error Log])
+
+(only-in source.apache-config)
+
+(input nothing)
+
+(output nothing)
+
+(save nothing)
+
+(script [TIGER_ERROR_LOG="/var/log/httpd/error_log"
+LEOPARD_ERROR_LOG="/var/log/apache2/error_log"
+
+if [[ "$TM_APACHE_ERROR_LOG" == "" ]]; then
+
+	if [[ -f "$LEOPARD_ERROR_LOG" ]]; then
+
+		TM_APACHE_ERROR_LOG="$LEOPARD_ERROR_LOG"
+
+	else
+
+		TM_APACHE_ERROR_LOG="$TIGER_ERROR_LOG"
+
+	fi
+fi
+
+if [[ -f "$TM_APACHE_ERROR_LOG" ]]; then
+
+	#tailLog "$TM_APACHE_ERROR_LOG" "httpd Error Log"
+	osascript "$TM_BUNDLE_SUPPORT/lib/tail_log.applescript" "$TM_APACHE_ERROR_LOG" "httpd Error Log" >/dev/null;
+
+else
+
+	exit_show_tool_tip "http Access Log not located."
+
+fi
+])

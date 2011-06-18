@@ -1,0 +1,49 @@
+(folding
+    (start [^[ ]*(?x)
+		(<(?i:FilesMatch|Files|DirectoryMatch|Directory|LocationMatch|Location|VirtualHost|IfModule|IfDefine|Perl)\b.*?>
+		)])
+    (stop [^[ ]*(?x)
+		(</(?i:FilesMatch|Files|DirectoryMatch|Directory|LocationMatch|Location|VirtualHost|IfModule|IfDefine|Perl)>
+		)]))
+
+(in source.apache-config
+    (shell-variables
+        (TM_COMMENT_START [# ]))
+    (comment.line [# ]))
+
+(in source.apache-config)
+
+(in source.apache-config)
+
+(in source.apache-config)
+
+(in meta.vhost.apache-config
+    (shell-variables
+        (TM_DEFAULT_TAG Directory)))
+
+(in source.apache-config
+    (pair <
+        >
+        (smart-typing))
+    (shell-variables
+        (TM_DEFAULT_TAG VirtualHost)))
+
+(in meta.toc-list.directory.apache-config
+    (symbol-list
+        (transformation [s/^\s*/Dir: /; s/\s+/ /g; s/['"]//g])))
+
+(in meta.toc-list.location.apache-config
+    (symbol-list
+        (transformation [s/^\s*/Loc: /; s/\s+/ /g; s/['"]//g])))
+
+(in [meta.vhost.apache-config meta.toc-list.directory.apache-config]
+    (symbol-list
+        (transformation [s/^\s*//; s/\s+/ /g; s/['"]//g; s/^/   Dir: /])))
+
+(in [meta.vhost.apache-config meta.toc-list.location.apache-config]
+    (symbol-list
+        (transformation [s/^\s*//; s/\s+/ /g; s/['"]//g; s/^/   Loc: /])))
+
+(in meta.toc-list.virtual-host.apache-config
+    (symbol-list
+        (transformation [s/^\s*/Host: /; s/\s+/ /g])))

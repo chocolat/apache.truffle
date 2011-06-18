@@ -1,0 +1,11 @@
+(name Directory)
+
+(trigger
+    (tab dir))
+
+(only-in source.apache-config)
+
+(snippet [<Directory %{1="/Library/WebServer/%{2=\"example/\"}"}>
+	%{0}
+</Directory>
+])

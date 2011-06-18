@@ -1,0 +1,32 @@
+(root source.apache-config.mod_perl
+    (zone comment.block.documentation.apache-config.mod_perl
+        (start
+            (regex ^=
+                (0 punctuation.definition.comment.mod_perl)))
+        (end
+            (regex ^=cut
+                (0 punctuation.definition.comment.mod_perl))))
+    (zone support.constant.apache-config.mod_perl
+        (match
+            (list PerlAddVar PerlConfigRequire PerlLoadModule PerlModule PerlOptions PerlPassEnv PerlPostConfigRequire PerlRequire PerlSetEnv PerlSetVar PerlSwitches SetHandler PerlOpenLogsHandler PerlPostConfigHandler PerlChildInitHandler PerlChildExitHandler PerlPreConnectionHandler PerlProcessConnectionHandler PerlInputFilterHandler PerlOutputFilterHandler PerlSetInputFilter PerlSetOutputFilter PerlPostReadRequestHandler PerlTransHandler PerlMapToStorageHandler PerlInitHandler PerlHeaderParserHandler PerlAccessHandler PerlAuthenHandler PerlAuthzHandler PerlTypeHandler PerlFixupHandler PerlResponseHandler PerlLogHandler PerlCleanupHandler PerlInterpStart PerlInterpMax PerlInterpMinSpare PerlInterpMaxSpare PerlInterpMaxRequests PerlInterpScope PerlTrace)
+            (boundary.both)))
+    (zone support.constant.apache-config.mod_perl_1.mod_perl
+        (match
+            (list PerlHandler PerlScript PerlSendHeader PerlSetupEnv PerlTaintCheck PerlWarn PerlFreshRestart)
+            (boundary.both)))
+    (zone meta.perl-section.apache-config.mod_perl
+        (start
+            (regex [^\s*((<)(Perl)(>))]
+                (3 entity.name.tag.apache-config)
+                (4 punctuation.definition.tag.apache-config)
+                (1 meta.tag.apache-config)
+                (2 punctuation.definition.tag.apache-config)))
+        (end
+            (regex [^\s*((</)(Perl)(>))]
+                (3 entity.name.tag.apache-config)
+                (4 punctuation.definition.tag.apache-config)
+                (1 meta.tag.apache-config)
+                (2 punctuation.definition.tag.apache-config)))
+        (subzones
+            (include source.perl)))
+    (include source.apache-config))

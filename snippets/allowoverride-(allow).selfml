@@ -1,0 +1,8 @@
+(name [Allow Override])
+
+(trigger
+    (tab allow))
+
+(only-in source.apache-config)
+
+(snippet [AllowOverride %{1="%{2=\"AuthConfig \"}%{3=\"FileInfo \"}%{4=\"Indexes \"}%{5=\"Limit \"}%{6=\"Options\"}"}])

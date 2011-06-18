@@ -1,0 +1,11 @@
+(menu
+    (submenu apachectl command.apachectl-start command.apachectl-stop command.graceful command.restart --- command.apachectl-configtest)
+    command.documentation-for-word-selection
+    ---
+    command.tail-access.log
+    command.tail-error-log
+    ---
+    [snippet.allowoverride-(allow)]
+    snippet.directory
+    [snippet.options-(opt)]
+    [snippet.virtualhost-(vhost)])

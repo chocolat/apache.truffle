@@ -1,0 +1,14 @@
+(trigger
+    (key [[cmd]R]))
+
+(name [Config Test])
+
+(only-in source.apache-config)
+
+(input nothing)
+
+(output tooltip)
+
+(save nothing)
+
+(script [apachectl configtest])
